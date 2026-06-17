@@ -186,6 +186,9 @@ export default function Game({
         <Chat
           messages={chatMessages}
           onSendMessage={onSendMessage}
+          isDrawer={isDrawer}
+          gameState={gameState}
+          players={players}
           socketId={socketId}
         />
       </div>
