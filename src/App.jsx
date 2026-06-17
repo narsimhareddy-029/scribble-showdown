@@ -66,6 +66,11 @@ export default function App() {
       setChatMessages((prev) => [...prev, msg]);
     });
 
+    // Timer tick update
+    socket.on('timerTick', (timeLeft) => {
+      setRoomState((prev) => prev ? { ...prev, timer: timeLeft } : null);
+    });
+
     // Join / room errors
     socket.on('joinError', (message) => {
       setSocketError(message);

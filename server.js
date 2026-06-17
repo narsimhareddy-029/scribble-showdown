@@ -320,7 +320,7 @@ io.on('connection', (socket) => {
 
     if (room.gameState === 'PLAYING' && socket.id !== room.currentDrawer && !player.hasGuessed) {
       const cleanGuess = message.trim().toLowerCase();
-      const cleanWord = room.currentWord.toLowerCase();
+      const cleanWord = (room.currentWord || '').toLowerCase();
 
       if (cleanGuess === cleanWord) {
         player.hasGuessed = true;
