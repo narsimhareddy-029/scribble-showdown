@@ -59,8 +59,8 @@ export default function Canvas({
     const canvas = canvasRef.current;
     if (!ctx || !canvas) return;
 
-    const x = data.x * canvas.width;
-    const y = data.y * canvas.height;
+    const x = data.x * canvas.clientWidth;
+    const y = data.y * canvas.clientHeight;
 
     ctx.strokeStyle = data.color;
     ctx.lineWidth = data.size;

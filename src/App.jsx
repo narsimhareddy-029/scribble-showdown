@@ -35,6 +35,10 @@ export default function App() {
       setSocketId(socket.id);
     });
 
+    if (socket.connected) {
+      setSocketId(socket.id);
+    }
+
     // Room successfully created
     socket.on('roomCreated', (code) => {
       setRoomCode(code);
