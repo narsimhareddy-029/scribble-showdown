@@ -118,7 +118,7 @@ export default function App() {
   }, []);
 
   const startGame = useCallback(() => {
-    socketRef.current?.emit('startGame', { roomCode });
+    socketRef.current?.emit('startGame', roomCode);
   }, [roomCode]);
 
   const selectWord = useCallback((word) => {
@@ -126,24 +126,20 @@ export default function App() {
   }, [roomCode]);
 
   const sendDrawing = useCallback((drawingData) => {
-    socketRef.current?.emit('drawing', { roomCode, drawingData });
+    socketRef.current?.emit('draw', { roomCode, drawData: drawingData });
   }, [roomCode]);
 
   const clearCanvas = useCallback(() => {
-    socketRef.current?.emit('clearCanvas', { roomCode });
+    socketRef.current?.emit('clearCanvas', roomCode);
   }, [roomCode]);
 
   const undoDrawing = useCallback(() => {
-    socketRef.current?.emit('undoDrawing', { roomCode });
+    socketRef.current?.emit('undo', roomCode);
   }, [roomCode]);
 
   const sendMessage = useCallback((text) => {
-    socketRef.current?.emit('chatMessage', {
-      roomCode,
-      message: text,
-      playerName,
-    });
-  }, [roomCode, playerName]);
+    socketRef.current?.emit('sendMessage', { roomCode, message: text });
+  }, [roomCode]);
 
   const sendReaction = useCallback((emoji) => {
     socketRef.current?.emit('sendReaction', { roomCode, emoji });
