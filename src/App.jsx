@@ -4,7 +4,9 @@ import Home from './components/Home';
 import Lobby from './components/Lobby';
 import Game from './components/Game';
 
-const SERVER_URL = `${window.location.protocol}//${window.location.hostname}:4000`;
+const SERVER_URL = window.location.hostname === 'localhost' || window.location.hostname.match(/^\d+\.\d+\.\d+\.\d+$/)
+  ? `${window.location.protocol}//${window.location.hostname}:4000`
+  : `${window.location.protocol}//${window.location.hostname}`;
 
 export default function App() {
   // ── State ──────────────────────────────────────────
