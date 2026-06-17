@@ -23,7 +23,8 @@ export default function App() {
 
   // ── Socket Initialisation & Listeners ──────────────
   useEffect(() => {
-    const socket = io(SERVER_URL, {
+    const isDev = window.location.hostname === 'localhost' || window.location.hostname.match(/^\d+\.\d+\.\d+\.\d+$/);
+    const socket = io(isDev ? SERVER_URL : undefined, {
       autoConnect: true,
       reconnectionAttempts: 5,
     });
